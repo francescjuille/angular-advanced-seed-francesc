@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page-edit-container',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageEditContainerComponent implements OnInit {
 
-  constructor() { }
+  options: FormGroup;
+  hideRequiredControl = new FormControl(false);
+  floatLabelControl = new FormControl('auto');
 
+  constructor(fb: FormBuilder,private router:Router) {
+    this.options = fb.group({
+      hideRequired: this.hideRequiredControl,
+      floatLabel: this.floatLabelControl,
+    });
+  }
   ngOnInit(): void {
+  }
+
+  goStatisticsUser(){
+    this.router.navigate(['/home-page/statistics'])
   }
 
 }

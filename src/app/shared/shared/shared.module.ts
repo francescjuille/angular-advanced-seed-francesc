@@ -34,10 +34,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { HeaderComponent } from 'src/app/common/components/header/header.component';
-import { FooterComponent } from 'src/app/common/components/footer/footer.component';
-import { HeaderModule } from 'src/app/common/components/header/header.module';
-import { FooterModule } from 'src/app/common/components/footer/footer.module';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
 
 
 @NgModule({
@@ -77,7 +75,7 @@ import { FooterModule } from 'src/app/common/components/footer/footer.module';
     MatRadioModule,
     MatDatepickerModule,
     MatTooltipModule,
-    
+    MatProgressBarModule
   ]
 })
 export class SharedModule { }
