@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: false,
+  mockProvider: false,
+  apiDomain: 'http://my-production-domain'
 };
