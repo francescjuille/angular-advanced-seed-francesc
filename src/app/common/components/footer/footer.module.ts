@@ -11,4 +11,4 @@ import { FooterComponent } from './footer.component';
   ],
   exports: [FooterComponent]
 })
-export class AppHeaderModule { }
+export class FooterModule { }
