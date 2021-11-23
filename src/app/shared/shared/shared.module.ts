@@ -35,12 +35,14 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
 @NgModule({
   declarations: [],
   exports: [
+    TranslateModule,
     FormsModule,
     ReactiveFormsModule,
     CdkTreeModule,

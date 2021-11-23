@@ -1,0 +1,19 @@
+{
+    "PAGES": {
+        "LOGIN":{
+            "CONTAINERS":{
+                "login-container":{
+                    "title":"Inicia Sesión"
+                }
+            },
+            "COMPONENTS":{
+
+            }
+        },
+        "HOME-PAGE":{
+        }
+    },
+    "COMMON": {
+
+    }
+}

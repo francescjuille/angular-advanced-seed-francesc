@@ -1,0 +1,19 @@
+{
+    "PAGES": {
+        "LOGIN":{
+            "CONTAINERS":{
+                "login-container":{
+                    "title":"Login"
+                }
+            },
+            "COMPONENTS":{
+
+            }
+        },
+        "HOME-PAGE":{
+        }
+    },
+    "COMMON": {
+
+    }
+}

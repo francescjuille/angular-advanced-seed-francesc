@@ -17,7 +17,7 @@ import { HeaderModule } from 'src/app/common/components/header/header.module';
     CommonModule,
     SharedModule,
     HeaderModule,
-    FooterModule
+    FooterModule,
      
   ]
 })
