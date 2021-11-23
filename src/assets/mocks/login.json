@@ -1,6 +1,7 @@
 {
     "data":{
-        "status":"true",
-        "body":"login response mock"
+        "status":true,
+        "body":"login response mock",
+        "token":"Bearer 4utwujiwlkjt4weoi7urhgi..."
     }
 }

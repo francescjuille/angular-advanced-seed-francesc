@@ -13,7 +13,7 @@ export class HttpService {
 
   constructor(private mockUtils: MockUtils, private httpClient:HttpClient) { }
 
-  callService(serviceName:string, serviceMethod = 'POST', requestBody?:any) {
+  callService(serviceName:string, serviceMethod = 'POST', requestBody?:any): Observable<any> {
     let responseServiceObservable: Observable<any>;
     const serviceCallParams = {serviceName:serviceName,serviceMethod:serviceMethod,requestBody:requestBody}
     if (environment.mockProvider){
@@ -22,14 +22,14 @@ export class HttpService {
       responseServiceObservable = this.httpCall(serviceCallParams);
     }
 
-    responseServiceObservable.pipe(map((response) => {
-      console.log("response service call observable pipe");
+    responseServiceObservable = responseServiceObservable.pipe(map((response) => {
+      console.log("Response service call observable pipe");
       console.log(response);
       // TODO: implement some project needed validations here
-
+      if (environment.mockProvider)return response.default;
       return response;
     }))
-
+    return responseServiceObservable;
   }
 
   private httpCall(serviceCallParams) {
@@ -48,9 +48,16 @@ export class HttpService {
 
   private getAppHeaders(): HttpHeaders {
     let httpHeaders: HttpHeaders;
-    httpHeaders.append('Authorization','Bearer your token')
+    const token = this.getToken()
+    if(token) {
+      httpHeaders.append('Authorization',token);
+    }
     //TODO: add your required http headers that need your app
     return httpHeaders;
+  }
+
+  private getToken() {
+    return localStorage.getItem("token") || null;
   }
 
 }
