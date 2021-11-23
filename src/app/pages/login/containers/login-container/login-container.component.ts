@@ -14,7 +14,7 @@ export class LoginContainerComponent implements OnInit {
   public loginInvalid: boolean;
   private formSubmitAttempt: boolean;
   private returnUrl: string;
-  apiErrors = [];
+  errorApi = [];
 
   constructor(
     private fb: FormBuilder,
@@ -40,6 +40,7 @@ export class LoginContainerComponent implements OnInit {
         const username = this.form.get('username').value;
         const password = this.form.get('password').value;
         const resultLogin = await this.authService.login("dd", "sdd");
+        this.errorApi = []; //TODO: put as response of login result
         console.log("login call mock component:")
         console.log(resultLogin.data.status)
         if(resultLogin.data.status) {

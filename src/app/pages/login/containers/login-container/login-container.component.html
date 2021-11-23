@@ -21,6 +21,7 @@
             <mat-error>
               Please provide a valid password
             </mat-error>
+            <span *ngIf="errorApi.password"> {{errorApi.password)}} </span>
           </mat-form-field>
           <button mat-raised-button color="primary">Login</button>
         </form>
