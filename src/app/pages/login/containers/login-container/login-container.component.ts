@@ -26,7 +26,7 @@ export class LoginContainerComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      username: ['', Validators.email],
+      email: ['', Validators.email],
       password: ['', Validators.required]
     });
     
@@ -37,9 +37,9 @@ export class LoginContainerComponent implements OnInit {
 
     if (this.form.valid) {
       try {
-        const username = this.form.get('username').value;
+        const username = this.form.get('email').value;
         const password = this.form.get('password').value;
-        const resultLogin = await this.authService.login("dd", "sdd");
+        const resultLogin = await this.authService.login(username, password);
         this.errorApi = []; //TODO: put as response of login result
         console.log("login call mock component:")
         console.log(resultLogin.data.status)

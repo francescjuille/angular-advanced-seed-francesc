@@ -3,43 +3,6 @@
     <br>
     <p style="text-align: center;font-size: 40px;">Edit User</p>
     <div style="padding: 100px;">
-        <div class="example-container">
-            <form [formGroup]="options">
-              <mat-checkbox [formControl]="hideRequiredControl">is user admin</mat-checkbox>
-              <div>
-                <label>Float label: </label>
-                <mat-radio-group [formControl]="floatLabelControl">
-                  <mat-radio-button value="auto">yes</mat-radio-button>
-                  <mat-radio-button value="always">no</mat-radio-button>
-                </mat-radio-group>
-              </div>
-          
-              <mat-form-field appearance="fill"
-                  [hideRequiredMarker]="hideRequiredControl.value"
-                  [floatLabel]="floatLabelControl.value">
-                <input matInput placeholder="user name" required>
-              </mat-form-field>
-          
-              <mat-form-field appearance="fill" [floatLabel]="floatLabelControl.value">
-                <mat-label>user email</mat-label>
-                <input matInput placeholder="Simple placeholder">
-              </mat-form-field>
-          
-              <mat-form-field appearance="fill"
-                  [hideRequiredMarker]="hideRequiredControl.value"
-                  [floatLabel]="floatLabelControl.value">
-                <mat-select required>
-                  <mat-option>-- None --</mat-option>
-                  <mat-option value="option">Student</mat-option>
-                  <mat-option value="option">Worker</mat-option>
-                  <mat-option value="option">Boss</mat-option>
-
-                </mat-select>
-                <mat-label><mat-icon>favorite</mat-icon> <b> user</b> <i> Type</i></mat-label>
-              </mat-form-field>
-            </form>
-          </div>
-
-          <button (click)="goStatisticsUser()" style="margin-top: 20px;margin-left: 100px;" mat-raised-button color="primary">Go to User Statisticss</button>
+      
     </div>
 </div>
