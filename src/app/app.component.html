@@ -1,3 +1,8 @@
 <div>
   <router-outlet (activate)="onActivate($event)"></router-outlet>
+  <div *ngIf="showSpinner" class="spinner-background">
+    <div class="spinner-loading-location">
+      <mat-progress-spinner value="100" mode="indeterminate"></mat-progress-spinner>
+    </div>
+  </div>
 </div>

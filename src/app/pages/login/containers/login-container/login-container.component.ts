@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/common/services/auth/auth.service';
+import { ROUTES_CONSTANTS } from 'src/app/constants/routes.constants';
 
 @Component({
   selector: 'app-login-container',
@@ -25,12 +26,16 @@ export class LoginContainerComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.buildForm();
+  }
+
+  buildForm(){
     this.form = this.fb.group({
       email: ['', Validators.email],
       password: ['', Validators.required]
     });
-    
   }
+
   async onSubmit() {
     this.loginInvalid = false;
     this.formSubmitAttempt = false;
@@ -45,7 +50,7 @@ export class LoginContainerComponent implements OnInit {
         console.log(resultLogin.data.status)
         if(resultLogin.data.status) {
           console.log("valid login")
-          this.router.navigate(['/home-page']);
+          this.router.navigate([ROUTES_CONSTANTS.homePage]);
         }
       } catch (err) {
         this.loginInvalid = true;

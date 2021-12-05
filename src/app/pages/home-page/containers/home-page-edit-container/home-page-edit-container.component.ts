@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/common/services/user/user.service';
+import { ROUTES_CONSTANTS } from 'src/app/constants/routes.constants';
 
 @Component({
   selector: 'app-home-page-edit-container',
@@ -9,21 +11,43 @@ import { Router } from '@angular/router';
 })
 export class HomePageEditContainerComponent implements OnInit {
 
-  options: FormGroup;
-  hideRequiredControl = new FormControl(false);
-  floatLabelControl = new FormControl('auto');
+  form: FormGroup;
 
-  constructor(fb: FormBuilder,private router:Router) {
-    this.options = fb.group({
-      hideRequired: this.hideRequiredControl,
-      floatLabel: this.floatLabelControl,
+  constructor(private fb: FormBuilder,private router:Router,private userService: UserService) {
+    this.buildForm();
+  }
+
+  ngOnInit(): void {
+    this.getUserData();
+  }
+
+  buildForm() {
+    this.form = this.fb.group({
+      email: ['', Validators.email],
+      name: ['', Validators.required],
+      age: ['', Validators.required, Validators.pattern("^[0-9]*$")],
     });
   }
-  ngOnInit(): void {
+
+  getUserData() {
+    this.userService.getUserData().subscribe(data=>{
+      console.log("DATAA:")
+      console.log(data)
+      this.form.patchValue({
+        email: data.data.email,
+        name:data.data.name,
+        age:data.data.age
+      });
+    })
+
   }
 
   goStatisticsUser(){
-    this.router.navigate(['/home-page/statistics'])
+    this.router.navigate([ROUTES_CONSTANTS.homePageStatistics])
+  }
+
+  saveData(){
+    console.log("data saved")
   }
 
 }

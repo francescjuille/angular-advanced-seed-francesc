@@ -4,10 +4,15 @@
       <i class="fas fa-bars"></i>
      </div>
     <span>&nbsp;&nbsp;Angular  Seed, made with &nbsp;</span>
-    <span class="example-spacer"></span>
     <div>
       <i class="fas fa-heart"></i>
     </div>
+
+    <select style="width:120px; margin-left:20px" class="form-select" aria-label="" [(ngModel)]="selectedLanguaje" (change)="updateLanguage()">
+      <option value="en">English</option>
+      <option value="es">Español</option>
+      <option value="fr">Français</option>
+    </select>
 
   </div>
 </div>

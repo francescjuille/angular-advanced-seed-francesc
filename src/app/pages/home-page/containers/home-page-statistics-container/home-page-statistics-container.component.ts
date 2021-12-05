@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-const ELEMENT_DATA = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-
-];
+import { BooksService } from 'src/app/common/services/books/books.service';
+import { SpinnerService } from 'src/app/common/services/spinner/spinner.service';
+import { ROUTES_CONSTANTS } from 'src/app/constants/routes.constants';
 
 @Component({
   selector: 'app-home-page-statistics-container',
@@ -16,15 +10,27 @@ const ELEMENT_DATA = [
   styleUrls: ['./home-page-statistics-container.component.scss']
 })
 export class HomePageStatisticsContainerComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
-  constructor(private router:Router) { }
+
+  books = [];
+
+  constructor(private router:Router, private booksService: BooksService, private spinnerService: SpinnerService) { }
 
   ngOnInit(): void {
+    this.getBooksData();
   }
 
-  goEditUser(){
-    this.router.navigate(['/home-page/edit'])
+  goEditUser() {
+    this.router.navigate([ROUTES_CONSTANTS.homePageEdit])
+  }
+
+  getBooksData() {
+    this.spinnerService.spinnerLoading.next(true);
+    this.booksService.getAllUserBooks().subscribe(data => {
+      this.spinnerService.spinnerLoading.next(false);
+      console.log("data:")
+      console.log(data)
+      this.books = data.data.books;
+    });
   }
 
 }

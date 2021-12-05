@@ -2,7 +2,30 @@
     <app-header></app-header>
     <br>
     <p style="text-align: center;font-size: 40px;">Edit User</p>
-    <div style="padding: 100px;">
+    <div style="padding: 100px;display:flex;justify-content:center">
+        <form [formGroup]="form">
+          <h2>Update your profile</h2>
+          <div class="mb-3">
+            <input class="form-control" placeholder="Email" type="text"  formControlName="email" required>
+            <div style="color:red" *ngIf="form.get('email').invalid && form.get('email').touched">
+              Please provide a valid email address 
+            </div>
+          </div>
+          <div class="mb-3">
+            <input class="form-control" placeholder="Name" type="text" formControlName="name" required>
+            <div style="color:red" *ngIf="form.get('name').invalid && form.get('name').touched">
+              Please provide a valid name
+            </div>
+          </div>
+          <div class="mb-3">
+            <input class="form-control" placeholder="Age" type="text" formControlName="age" required>
+            <div style="color:red" *ngIf="form.get('age').invalid && form.get('age').touched">
+              Please provide a valid age 
+            </div>
+          </div>
+          <br>
+          <button  type="button" class="btn btn-primary" (click)="saveData()">Save Data</button>
+        </form>
       
     </div>
 </div>

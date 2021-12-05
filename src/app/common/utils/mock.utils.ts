@@ -1,7 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { delay} from "rxjs/operators";
-import * as Login from 'src/assets/mocks/login.json' 
+import * as Login from 'src/assets/mocks/login.json';
+import * as AllUserBooks from 'src/assets/mocks/allUserBooks.json';
+import * as UserData from 'src/assets/mocks/userData.json';
+
+
 
 @Injectable({
     providedIn: 'root'
@@ -20,6 +24,10 @@ export class MockUtils {
         switch (callParams.serviceName) {
             case 'login':
                 return Login;
+            case 'get-all-user-books':
+                return AllUserBooks;
+            case 'get-user-data':
+                return UserData;    
         }
         return null;
     }

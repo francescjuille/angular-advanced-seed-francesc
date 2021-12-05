@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { ROUTES_CONSTANTS } from 'src/app/constants/routes.constants';
 import { HttpService } from '../api/http.service';
 
 @Injectable({
@@ -46,6 +47,6 @@ export class AuthService {
   async logout(redirect: string) {
       this.isAuthenticated.next(false);
       this.removeAuthToken();
-      this.router.navigate(['login']);
+      this.router.navigate([ROUTES_CONSTANTS.login]);
   }
 }

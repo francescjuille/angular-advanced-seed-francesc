@@ -1,5 +1,6 @@
 export const ROUTES_CONSTANTS = {
-    home: 'home',
     login: 'login',
-    dashboard: 'dashboard'
+    homePage: 'home-page',
+    homePageEdit: 'home-page/edit',
+    homePageStatistics: 'home-page/statistics'
 };

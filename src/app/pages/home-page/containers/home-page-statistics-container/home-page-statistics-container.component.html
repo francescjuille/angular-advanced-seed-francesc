@@ -1,8 +1,14 @@
 <div>
     <app-header></app-header>
     <br>
-    <p style="text-align: center;font-size: 40px;">User Stats</p>
-    <div style="padding: 100px;">
-
+    <button  type="button" style="margin-left:20%" class="btn btn-primary" (click)="goEditUser()">Edit your profile</button>
+    <p style="text-align: center;font-size: 40px;">Your Books</p>
+    <div style="padding: 100px;padding-top: 0px;display:flex;justify-content:center;flex-wrap:wrap">
+       <div *ngFor="let book of books">
+          <div class="card" style="width:300px;height:400px; padding:20px;margin:10px">
+            <h4 class="book-title">{{book.title}}</h4>
+            <p style="height:300px">{{book.summary}}</p>
+          </div>
+       </div>
     </div>
 </div>
